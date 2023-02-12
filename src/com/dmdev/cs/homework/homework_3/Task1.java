@@ -17,7 +17,7 @@ public class Task1 {
         System.out.println("Result: " + Arrays.toString(removeNegativesAndMultiply(arr)));
     }
 
-    public static int[] removeNegativesAndMultiply(int[] array) {
+    private static int[] removeNegativesAndMultiply(int[] array) {
         int count = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] >= 0) {

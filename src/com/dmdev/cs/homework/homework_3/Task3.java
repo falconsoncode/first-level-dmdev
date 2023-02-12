@@ -24,7 +24,7 @@ public class Task3 {
         System.out.println(Arrays.toString(splitArray(arr)));
     }
 
-    public static int[][] splitArray(int[] array) {
+    private static int[][] splitArray(int[] array) {
         int negCount = 0;
         int posCount = 0;
         int zeroCount = 0;

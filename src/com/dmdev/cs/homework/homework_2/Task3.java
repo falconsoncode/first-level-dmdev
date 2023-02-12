@@ -19,7 +19,7 @@ public class Task3 {
         calculateAccountValues(salary, expenses, time);
     }
 
-    public static void calculateAccountValues(double salary, double expenses, int time) {
+    private static void calculateAccountValues(double salary, double expenses, int time) {
         double investment = 0.0;
         double broker = 0.0;
         double account = 0.0;
