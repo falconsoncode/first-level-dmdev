@@ -14,20 +14,28 @@ public class Task3 {
     public static void main(String[] args) {
         double salary = 600.0;
         double expenses = 300.0;
-        double investment = 0.0;
-        double brokerAccount = 0.0;
-        double personalAccount = 0.0;
         int time = 38;
-        for (int i = 1; i < time; i++) {
+
+        calculateAccountValues(salary, expenses, time);
+    }
+
+    public static void calculateAccountValues(double salary, double expenses, int time) {
+        double investment = 0.0;
+        double broker = 0.0;
+        double account = 0.0;
+
+        for (int i = 0; i < time; i++) {
             if (i > 0 && i % 6 == 0) {
                 salary += 400.0;
             }
-            investment = salary * 0.1;
-            brokerAccount += investment * 0.02;
-            personalAccount = salary - expenses - investment;
+            if (i > 0) {
+                investment = salary * 0.1;
+            }
+            broker += investment * 0.02;
+            account = salary - expenses - investment;
         }
         System.out.println("Salary: " + salary);
-        System.out.println("Broker: " + brokerAccount);
-        System.out.println("Account: " + personalAccount);
+        System.out.println("Broker: " + broker);
+        System.out.println("Account: " + account);
     }
 }
