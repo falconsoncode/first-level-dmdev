@@ -25,14 +25,14 @@ public class Task3 {
         double account = 0.0;
 
         for (int i = 0; i < time; i++) {
-            if (i > 0 && i % 6 == 0) {
+            if (i > 1 && i % 6 == 0) {
                 salary += 400.0;
             }
             if (i > 0) {
                 investment = salary * 0.1;
             }
             broker += investment * 0.02;
-            account = salary - expenses - investment;
+            account += salary - expenses - investment;
         }
         System.out.println("Salary: " + salary);
         System.out.println("Broker: " + broker);

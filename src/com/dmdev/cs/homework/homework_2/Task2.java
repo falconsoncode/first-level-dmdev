@@ -11,7 +11,8 @@ package com.dmdev.cs.homework.homework_2;
 public class Task2 {
     public static void main(String[] args) {
         int number = 4508;
-        System.out.println(revertNumber(number));
+        System.out.println("method revertNumber result: " + revertNumber(number));
+        System.out.println("method reversalNumber result: " + reversalNumber(number));
     }
 
     private static int revertNumber(int number) {
@@ -23,5 +24,13 @@ public class Task2 {
             number = number / 10;
         }
         return reverted;
+    }
+
+    private static int reversalNumber(int number) {
+        int reversalNumber = 0;
+        for (; number > 0; number /= 10) {
+            reversalNumber = reversalNumber * 10 + number % 10;
+        }
+        return reversalNumber;
     }
 }
