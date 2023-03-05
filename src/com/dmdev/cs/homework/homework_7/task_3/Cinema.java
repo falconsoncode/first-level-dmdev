@@ -3,9 +3,9 @@ package com.dmdev.cs.homework.homework_7.task_3;
 import java.util.*;
 
 public class Cinema {
-    private TreeMap<Integer, ArrayList<Movie>> movies;
+    private LinkedHashMap<Integer, ArrayList<Movie>> movies;
 
-    public Cinema(TreeMap<Integer, ArrayList<Movie>> filmsByYear) {
+    public Cinema(LinkedHashMap<Integer, ArrayList<Movie>> filmsByYear) {
         this.movies = filmsByYear;
     }
 
@@ -62,7 +62,7 @@ public class Cinema {
         return movies.subList(0, Math.min(10, movies.size()));
     }
 
-    public TreeMap<Integer, ArrayList<Movie>> getMovies() {
+    public LinkedHashMap<Integer, ArrayList<Movie>> getMovies() {
         return movies;
     }
 }

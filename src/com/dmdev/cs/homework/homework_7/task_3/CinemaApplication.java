@@ -1,14 +1,11 @@
 package com.dmdev.cs.homework.homework_7.task_3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class CinemaApplication {
     public static void main(String[] args) {
 
-        Cinema cinema = new Cinema(new TreeMap<>());
+        Cinema cinema = new Cinema(new LinkedHashMap<>());
 
         Movie movie1 = new Movie(1, 1900, 1, "Ужасы", 6);
         Movie movie2 = new Movie(2, 1900, 2, "Комедия", 7);
