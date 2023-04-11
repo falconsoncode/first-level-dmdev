@@ -1,61 +1,59 @@
-CREATE TABLE Student (
-  Student_ID INT PRIMARY KEY,
-  First_Name VARCHAR(50),
-  Last_Name VARCHAR(50),
-  Email VARCHAR(100),
-  Phone_Number VARCHAR(20)
+CREATE DATABASE postgres;
+
+CREATE SCHEMA public;
+
+CREATE TABLE IF NOT EXISTS student (
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(1500),
+  last_name VARCHAR(1500),
+  email VARCHAR(100),
+  phone_number VARCHAR(20),
+  UNIQUE(email)
 );
 
-CREATE TABLE Teacher (
-  Teacher_ID INT PRIMARY KEY,
-  First_Name VARCHAR(50),
-  Last_Name VARCHAR(50),
-  Email VARCHAR(100),
-  Phone_Number VARCHAR(20),
-  Qualification VARCHAR(50)
+CREATE TABLE IF NOT EXISTS teacher (
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(1500),
+  last_name VARCHAR(1500),
+  email VARCHAR(100),
+  phone_number VARCHAR(20),
+  qualification VARCHAR(50),
+  UNIQUE(email)
 );
 
-CREATE TABLE Course (
-  Course_ID INT PRIMARY KEY,
-  Course_Name VARCHAR(100),
-  Teacher_ID INT,
-  Course_Description TEXT,
-  FOREIGN KEY (Teacher_ID) REFERENCES Teacher(Teacher_ID)
+CREATE TABLE IF NOT EXISTS course (
+  id SERIAL PRIMARY KEY,
+  course_name VARCHAR(100),
+  teacher_id INT REFERENCES teacher(id),
+  course_description TEXT
 );
 
-CREATE TABLE Groups (
-  Group_ID INT PRIMARY KEY,
-  Group_Name VARCHAR(100),
-  Course_ID INT,
-  FOREIGN KEY (Course_ID) REFERENCES Course(Course_ID)
+CREATE TABLE IF NOT EXISTS groups (
+  id SERIAL PRIMARY KEY,
+  group_name VARCHAR(100),
+  course_id INT REFERENCES course(id)
 );
 
-CREATE TABLE Lesson (
-  Lesson_ID INT PRIMARY KEY,
-  Date DATE,
-  Start_Time TIME,
-  End_Time TIME,
-  Course_ID INT,
-  Teacher_ID INT,
-  FOREIGN KEY (Course_ID) REFERENCES Course(Course_ID),
-  FOREIGN KEY (Teacher_ID) REFERENCES Teacher(Teacher_ID)
+CREATE TABLE IF NOT EXISTS lesson (
+  id SERIAL PRIMARY KEY,
+  schedule TIMESTAMP,
+  start_time TIME,
+  end_time TIME,
+  course_id INT REFERENCES course(id),
+  teacher_id INT REFERENCES teacher(id)
 );
 
-CREATE TABLE Grades (
-  Grade_ID INT PRIMARY KEY,
-  Student_ID INT,
-  Lesson_ID INT,
-  Grade INT,
-  FOREIGN KEY (Student_ID) REFERENCES Student(Student_ID),
-  FOREIGN KEY (Lesson_ID) REFERENCES Lesson(Lesson_ID)
+CREATE TABLE IF NOT EXISTS grades (
+  id SERIAL PRIMARY KEY,
+  student_id INT REFERENCES student(id),
+  lesson_id INT REFERENCES lesson(id),
+  grade INT
 );
 
-CREATE TABLE Payment (
-  Payment_ID INT PRIMARY KEY,
-  Student_ID INT,
-  Course_ID INT,
-  Amount DECIMAL(10, 2),
-  Payment_Date DATE,
-  FOREIGN KEY (Student_ID) REFERENCES Student(Student_ID),
-  FOREIGN KEY (Course_ID) REFERENCES Course(Course_ID)
+CREATE TABLE IF NOT EXISTS payment (
+  id SERIAL PRIMARY KEY,
+  student_id INT REFERENCES student(id),
+  course_id INT REFERENCES course(id),
+  amount DECIMAL(10, 2),
+  payment_date TIMESTAMP
 );
